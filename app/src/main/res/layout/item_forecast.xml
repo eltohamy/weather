@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="forecastListViewModel"
+            type="com.weather.ui.home.step2.adapters.ForecastListViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/date"
+            mutableText="@{forecastListViewModel.getDateText()}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="@{forecastListViewModel.showHideClickListener}"
+            android:padding="@dimen/header_padding"
+            android:textColor="@color/black"
+            android:textSize="@dimen/title_text_size"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Dubai" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/min_temperature"
+            mutableText="@{forecastListViewModel.getMinTemperature()}"
+            mutableVisibility="@{forecastListViewModel.getGroupVisibility()}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/title_padding"
+            android:paddingTop="5dp"
+            android:paddingEnd="@dimen/title_padding"
+            android:paddingBottom="5dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sub_title_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/date"
+            tools:text="Min Temperature: 24" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/max_temperature"
+            mutableText="@{forecastListViewModel.getMaxTemperature()}"
+            mutableVisibility="@{forecastListViewModel.getGroupVisibility()}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/title_padding"
+            android:paddingTop="5dp"
+            android:paddingEnd="@dimen/title_padding"
+            android:paddingBottom="5dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sub_title_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/min_temperature"
+            tools:text="Max Temperature: 25" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/description"
+            mutableText="@{forecastListViewModel.getDescription()}"
+            mutableVisibility="@{forecastListViewModel.getGroupVisibility()}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/title_padding"
+            android:paddingTop="5dp"
+            android:paddingEnd="@dimen/title_padding"
+            android:paddingBottom="5dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sub_title_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/max_temperature"
+            tools:text="light rain" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/wind_speed"
+            mutableText="@{forecastListViewModel.getWindSpeed()}"
+            mutableVisibility="@{forecastListViewModel.getGroupVisibility()}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/title_padding"
+            android:paddingTop="5dp"
+            android:paddingEnd="@dimen/title_padding"
+            android:paddingBottom="5dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sub_title_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/description"
+            tools:text="Wind Speed: 5.7 m/s" />
+
+        <View
+            android:id="@+id/separator"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wind_speed" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

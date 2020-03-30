@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Weather</string>
+    <string name="title_step1">Step1</string>
+    <string name="title_step2">Step2</string>
+    <string name="min_temperature">Min Temperature: %s</string>
+    <string name="max_temperature">Max Temperature: %s</string>
+    <string name="wind_speed">Wind Speed: %s m/s</string>
+    <string name="error">Error while loading Weather</string>
+    <string name="empty_response">No Weather found</string>
+    <string name="retry">Retry</string>
+    <string name="enter_city_names">"City names (comma separated)"</string>
+    <string name="default_cities">Dubai,Abu Dhabi,Sharjah</string>
+    <string name="invalid_cities_length">Min 3 cities and max 7 cities are allowed</string>
+    <string name="permission_request">App requires location permission</string>
+    <string name="lat_lon">Longitude: %.3f, Latitude: %.3f</string>
+</resources>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.home.step1.Step1Fragment">
+
+    <data>
+
+        <variable
+            name="step1ViewModel"
+            type="com.weather.ui.home.step1.Step1ViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/cities_text_input_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/cities_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/enter_city_names"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:minLines="2"
+                android:text="@string/default_cities"
+                android:textAlignment="viewStart"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
+                android:textSize="@dimen/sub_title_text_size" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:mutableVisibility="@{step1ViewModel.getLoadingVisibility()}" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/weather_recycler"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:scrollbars="vertical"
+            app:adapter="@{step1ViewModel.getWeatherListAdapter()}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cities_text_input_layout"
+            tools:itemCount="11"
+            tools:listitem="@layout/item_weather" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/ic_no_data"
+            android:drawablePadding="4dp"
+            android:text="@string/error"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/buttonRetry"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonRetry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:onClick="@{step1ViewModel.errorClickListener}"
+            android:text="@string/retry"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_error"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="buttonRetry,text_error" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+
+
